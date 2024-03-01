@@ -1,0 +1,41 @@
+@startuml
+
+class Car {
+    - id: String
+    - model: String
+    - brand: String
+    + Car(id: String, model: String, brand: String)
+    + getId(): String
+    + getModel(): String
+    + getBrand(): String
+}
+
+class CarDb {
+    - carsDb: List<Car>
+    + CarDb()
+    + getCarByID(carId: String): Car
+    + getAllCars(): List<Car>
+}
+
+class CarOperations {
+    - carsDb: List<Car>
+    + CarOperations(carsDb: List<Car>)
+    + getCarsNames(): String
+    + getBestCar(): Car
+}
+
+class CarManager {
+    - carDb: CarDb
+    - carOperations: CarOperations
+    + CarManager()
+    + getCarFromDb(carId: String): Car
+    + getCarsNames(): String
+    + getBestCar(): Car
+}
+
+CarDb --> "1..*" Car : contains
+CarManager --> CarDb
+CarManager --> CarOperations
+CarOperations --> "1..*" Car : contains
+
+@enduml

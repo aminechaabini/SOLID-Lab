@@ -1,0 +1,23 @@
+class ElectronicDuck {
+    - _on: boolean
+    + quack(): void
+    + swim(): void
+    + turnOn(): void
+    + turnOff(): void
+}
+
+class NaturalDuck {
+    + quack(): void
+    + swim(): void
+}
+
+class Pool {
+    + run(): void
+    - quack(Duck... ducks): void
+    - swim(Duck... ducks): void
+}
+
+Duck <|-- ElectronicDuck
+Duck <|-- NaturalDuck
+
+@enduml
